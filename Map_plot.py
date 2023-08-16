@@ -8,7 +8,7 @@ import matplotlib as plt
 def map_plot(RPKM_file, output):
     df_RPM_filtered_length_filtered_CDS = pd.read_csv(RPKM_file, delim_whitespace=True)
     fig,ax = plt.subplots()
-    test = df_RPM_filtered_length_filtered_CDS[(df_RPM_filtered_length_filtered_CDS['Rest_clip_RPM_average'] > 1) & (df_RPM_filtered_length_filtered_CDS['Tg1_clip_RPM_average'] > 1)]
+    test = df_RPM_filtered_length_filtered_CDS[(df_RPM_filtered_length_filtered_CDS['Rest_clip_RPKM_average'] > 1) & (df_RPM_filtered_length_filtered_CDS['Tg1_clip_RPKM_average'] > 1)]
     test['clip_FC_percent'] = (test['clipseq_FC'] - test['clipseq_FC'].min()) / (test['clipseq_FC'].max() - test['clipseq_FC'].min())
     test.plot(kind='scatter', x='TotalRNA_FC', y='polysome_FC', figsize=(15,15), c='clip_FC_percent',cmap='coolwarm', alpha=0.9, ax=ax)
     cbar = ax.collections[0].colorbar
